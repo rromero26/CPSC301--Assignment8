@@ -1,5 +1,7 @@
 // Adapted from version by Frank Carrano and Timothy Henry
 #include "LinkedStack.h"
+using namespace std;
+
 
 template<class Type>
 LinkedStack<Type>::LinkedStack() : head(nullptr) {
@@ -56,7 +58,7 @@ bool LinkedStack<Type>::push(Type & newElement) {
 
   //***WHEN WOULD PUSH BE FALSE?***
 
-  Node<TYPE> *temp = new Node;                  //creates new node
+  Node<Type> *temp = new Node<Type>;                  //creates new node
   temp->data = newElement;                      //sets element of node
   temp->next = head;                            // add it to front of "stack"
   head = temp;                                  //has head point to top
@@ -72,7 +74,7 @@ bool LinkedStack<Type>::pop() {
         return false;
     }
 
-    Node<TYPE> *temp = new Node;
+    Node<Type> *temp = new Node<Type>;
     temp = head;
     head = head->next;                           //move head to next element
     delete temp;
