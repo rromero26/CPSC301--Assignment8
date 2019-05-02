@@ -35,6 +35,7 @@ LinkedStack<Type>::LinkedStack(const LinkedStack<Type> & aStack) {
 template<class Type>
 LinkedStack<Type>::~LinkedStack() {
   Node<Type> * tempHead = nullptr;          //create temp ptr
+
     while(isEmpty() != true){               //while stack is not empty, delete nodes
       tempHead = head;
       head = head->next;
@@ -52,32 +53,39 @@ bool LinkedStack<Type>::isEmpty() {
 //--------------------------------------------------------------
 template<class Type>
 bool LinkedStack<Type>::push(Type & newElement) {
-    Node<TYPE> *temp = new Node;                  //creates new node
-    temp->data = newElement;                      //sets element of node
 
-    temp->next = head;                            // add it to front of "stack"
-    head = temp;                                  //has head point to top
+  //***WHEN WOULD PUSH BE FALSE?***
+
+  Node<TYPE> *temp = new Node;                  //creates new node
+  temp->data = newElement;                      //sets element of node
+  temp->next = head;                            // add it to front of "stack"
+  head = temp;                                  //has head point to top
+
+  return true;
 }
 //--------------------------------------------------------------
 template<class Type>
 bool LinkedStack<Type>::pop() {
 
+    if(isEmpty() == true){
+        cout << "ERROR (POP): stack is empty." << endl;
+        return false;
+    }
+
     Node<TYPE> *temp = new Node;
     temp = head;
-    TYPE holder = head->data;
-    head = head->next;                             //move head to next element
-
-    delete temp;                                   //delete previous elemnt
-    return holder;                                 //return value of deleted element
+    head = head->next;                           //move head to next element
+    delete temp;
+    return true;
 }
 //--------------------------------------------------------------
 
 template<class Type>
 Type LinkedStack<Type>::peek() {
-  if(isEmpty() == true){                           //check if stack is empty
-    cout << "ERROR: stack is empty" << endl;
-    return 0;
-  }
+    if(isEmpty() == true){                           //check if stack is empty
+        cout << "ERROR (PEEK): stack is empty" << endl;
+        return NULL;
+    }
 
-  return head->data;                               //return value of top
+    return head->data;                               //return value of top
 }

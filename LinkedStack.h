@@ -23,6 +23,7 @@ public:
 
     // Stack operations
     bool isEmpty();
+
     bool push(Type & newElement);
     bool pop();
     Type peek();

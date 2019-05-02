@@ -8,6 +8,7 @@ int main() {
     LinkedStack<int> myStack;
     cout << myStack.isEmpty() << endl;
     // end of demo code
+
     
     // For each expression in "input.txt":
         // 1. Read expression into string variable
