@@ -20,7 +20,7 @@ int main() {
       cout << "ERROR: could not open file" << endl;
     }
 
-    LinkedStack<string> myStack;
+    //LinkedStack<string> myStack;
     string myLine;
     int expressionNum = 1;
     while(!myFile.eof()){
